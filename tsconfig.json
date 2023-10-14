@@ -6,6 +6,10 @@
     "strict": true,
     "module": "esnext",
     "target": "es5",
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"]
+    },
     "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",

@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { classNames } from '@/shared/lib';
 import { SideBarProps } from './SideBarProps';
-import { useState } from 'react';
 import { ThemeSwitcher } from '@/widgets/ThemeSwitcher';
 import { LangSwitcher } from '@/widgets/LangSwitcher';
 import { Button } from '@/shared/ui/Button';

@@ -8,7 +8,7 @@ import '@/shared/config/i18n';
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
       <ThemeContextProvider>
-        <RouterProvider router={router}/>
+        <RouterProvider router={router} />
       </ThemeContextProvider>
     </React.StrictMode>,
 );

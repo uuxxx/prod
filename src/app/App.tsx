@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/SideBar';
 import { AppFallback } from '@/widgets/AppFallback';
+import { ErrorBoundary } from './providers/ErrorBoundary';
 import './styles/index.scss';
 
 export const App = () => {
@@ -16,7 +17,9 @@ export const App = () => {
         <Sidebar />
         <Suspense fallback={<AppFallback />}>
           <div className="page-wrapper">
-            <Outlet />
+            <ErrorBoundary>
+              <Outlet />
+            </ErrorBoundary>
           </div>
         </Suspense>
       </div>

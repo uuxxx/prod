@@ -8,11 +8,14 @@
     "build": "webpack --mode=production --env mode=production",
     "lint:ts": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "stylelint '**/*{.css,.scss}' --fix",
-    "test": "jest --config ./config/jest/jest.config.ts"
+    "test:unit": "jest --config ./config/jest/jest.config.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-react": "^7.22.15",
+    "@babel/preset-typescript": "^7.23.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
     "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^6.1.4",

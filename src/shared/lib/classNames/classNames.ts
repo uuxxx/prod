@@ -1,10 +1,10 @@
 type Modes = Record<string, boolean | string>;
 
 export function classNames(
-  styles: Record<string, string>,
-  cls: string,
-  modes: Modes = {},
-  additional: string[] = [],
+    styles: Record<string, string>,
+    cls: string,
+    modes: Modes = {},
+    additional: string[] = [],
 ): string {
   let res = [cls];
 

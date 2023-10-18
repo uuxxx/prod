@@ -8,7 +8,7 @@ export function Button(props: PropsWithChildren<ButtonProps>) {
   const { className = '', children, theme = ButtonTheme.CLEAR, ...other } = props;
 
   return (
-    <button className={classNames(styles, 'button', {}, [className, theme])} {...other}>
+    <button className={classNames(styles, 'button', { theme }, [className])} {...other}>
       {children}
     </button>
   );

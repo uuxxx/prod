@@ -10,7 +10,7 @@ describe('classNames', () => {
 
     const res = classNames(mockStyles, 'main', { hovered: true }, ['additional']);
 
-    expect(res).toBe('abc ghi def');
+    expect(res).toBe('abc def additional');
   });
 
   it('modes obj received field with false value', () => {
@@ -22,7 +22,7 @@ describe('classNames', () => {
 
     const res = classNames(mockStyles, 'main', { hovered: false }, ['additional']);
 
-    expect(res).toBe('abc ghi');
+    expect(res).toBe('abc additional');
   });
 
   it('additional array includes empty string', () => {

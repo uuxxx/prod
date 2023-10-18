@@ -1,15 +1,12 @@
-type Modes = Record<string, (boolean | string)>
+type Modes = Record<string, boolean | string>;
 
 export function classNames(
-    styles: Record<string, string>,
-    cls: string,
-    modes: Modes = {},
-    additional: string[] = [],
+  styles: Record<string, string>,
+  cls: string,
+  modes: Modes = {},
+  additional: string[] = [],
 ): string {
-  const res = [
-    cls,
-    ...additional.filter(Boolean),
-  ];
+  let res = [cls];
 
   for (const key in modes) {
     if (modes[key]) {
@@ -17,7 +14,7 @@ export function classNames(
     }
   }
 
-  return res
-      .map((className) => styles[className])
-      .join(' ');
+  res = res.map((className) => styles[className]);
+  res.push(...additional.filter(Boolean));
+  return res.join(' ');
 }

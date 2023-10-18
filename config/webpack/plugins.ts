@@ -7,7 +7,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { PluginsOptions } from './types';
 
 function isWebpackPluginInstance(
-  plugin: webpack.WebpackPluginInstance | boolean,
+    plugin: webpack.WebpackPluginInstance | boolean,
 ): plugin is webpack.WebpackPluginInstance {
   return typeof plugin !== 'boolean';
 }

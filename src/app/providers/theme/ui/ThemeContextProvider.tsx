@@ -11,10 +11,14 @@ export const ThemeContextProvider: FC<PropsWithChildren> = ({ children }) => {
     setTheme(theme);
   }, []);
 
-  return <ThemeContext.Provider value={{
-    theme,
-    toggleTheme,
-  }}>
-    {children}
-  </ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider
+      value={{
+        theme,
+        toggleTheme,
+      }}
+    >
+      {children}
+    </ThemeContext.Provider>
+  );
 };

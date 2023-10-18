@@ -19,6 +19,8 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'i18next'],
   root: true,
   rules: {
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
     'require-jsdoc': [
       'error',
       {

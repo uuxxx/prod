@@ -7,7 +7,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { PluginsOptions } from './types';
 
 function isWebpackPluginInstance(
-    plugin: webpack.WebpackPluginInstance | boolean,
+  plugin: webpack.WebpackPluginInstance | boolean,
 ): plugin is webpack.WebpackPluginInstance {
   return typeof plugin !== 'boolean';
 }
@@ -27,8 +27,9 @@ export function plugins({ context, isProd }: PluginsOptions): webpack.WebpackPlu
     }),
     !isProd && new webpack.HotModuleReplacementPlugin(),
     !isProd && new ReactRefreshWebpackPlugin(),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-    }),
+    !isProd &&
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false,
+      }),
   ].filter(isWebpackPluginInstance);
 }

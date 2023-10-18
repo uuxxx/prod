@@ -1,7 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import { devServer } from './config/webpack/devServer';
-import { loaders } from './config/webpack/loaders';
+import { loaders } from './config/webpack/loaders/loaders';
 import { plugins } from './config/webpack/plugins';
 import { resolvers } from './config/webpack/resolvers';
 

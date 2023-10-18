@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { cssLoader } from './cssLoader';
 
 export function loaders(isProd: boolean): webpack.RuleSetRule[] {
   return [
@@ -10,19 +10,7 @@ export function loaders(isProd: boolean): webpack.RuleSetRule[] {
     },
     {
       test: /\.s[ac]ss$/i,
-      use: [
-        isProd ? MiniCssExtractPlugin.loader : 'style-loader',
-        {
-          loader: 'css-loader',
-          options: {
-            modules: {
-              auto: (resPath: string) => resPath.includes('.module.'),
-              localIdentName: isProd ? '[hash:base64:8]' : '[name]__[local]--[hash:base64:5]',
-            },
-          },
-        },
-        'sass-loader',
-      ],
+      use: cssLoader(isProd),
     },
     {
       test: /\.(png|jpe?g|gif)$/i,

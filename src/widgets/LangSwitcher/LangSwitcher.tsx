@@ -6,12 +6,14 @@ import { LangSwitcherProps } from './LangSwitcherProps';
 import styles from './LangSwitcher.module.scss';
 
 export function LangSwitcher(props: LangSwitcherProps) {
-  const { className = '' } = props;
+  const { className = '', short = false } = props;
 
   const { t, i18n } = useTranslation();
   const toggle = () => {
     i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
   };
+
+  const lang = t('Язык');
 
   return (
     <Button
@@ -19,7 +21,7 @@ export function LangSwitcher(props: LangSwitcherProps) {
       theme={ButtonTheme.CLEAR}
       className={classNames(styles, 'lang-switcher', {}, [className])}
     >
-      {t('Язык')}
+      {short ? lang.substring(0, 2) : lang}
     </Button>
   );
 }

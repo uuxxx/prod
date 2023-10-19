@@ -1,14 +1,15 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
+import { renderForTests } from '@/shared/config/tests/renderForTests';
 import { Sidebar } from './SideBar';
 
 describe('SideBar', () => {
   it('renders with collapsed className', () => {
-    render(<Sidebar />);
+    renderForTests(<Sidebar />);
     expect(screen.getByTestId('sidebar')).toHaveClass('sidebar', 'collapsed');
   });
 
   it('opens and closes', () => {
-    render(<Sidebar />);
+    renderForTests(<Sidebar />);
     const toggle = screen.getByTestId('sidebar-toggle');
     fireEvent.click(toggle);
     expect(screen.getByTestId('sidebar')).not.toHaveClass('collapsed');

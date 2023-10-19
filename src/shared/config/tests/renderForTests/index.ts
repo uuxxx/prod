@@ -1,0 +1,1 @@
+export { renderForTests } from './renderForTests';

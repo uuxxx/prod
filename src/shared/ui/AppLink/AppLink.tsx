@@ -9,7 +9,7 @@ export function AppLink(props: PropsWithChildren<AppLinkProps>) {
   const { className = '', children, theme = AppLinkTheme.PRIMARY, ...other } = props;
 
   return (
-    <Link className={classNames(styles, 'link', {}, [className, theme])} {...other}>
+    <Link className={classNames(styles, 'link', { [theme]: true }, [className])} {...other}>
       {children}
     </Link>
   );

@@ -11,4 +11,14 @@
   --navbar-height: 50px;
   --sidebar-width: 300px;
   --sidebar-width-collapsed: 80px;
+
+  /* z-index */
+  --z-index-overlay-opened: 5;
+  --z-index-overlay-closed: -5;
+  --z-index-modal-opened: 6;
+  --z-index-modal-closed: -5;
+
+  /* colors */
+  --overlay-closed-color: rgba(0 0 0 / 0%);
+  --overlay-opened-color: rgba(0 0 0 / 60%);
 }

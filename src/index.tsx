@@ -4,11 +4,12 @@ import { RouterProvider } from 'react-router-dom';
 import { ThemeContextProvider } from './app/providers/theme';
 import { router } from './app/providers/router';
 import '@/shared/config/i18n';
+import '@/app/styles/index.scss';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-      <ThemeContextProvider>
-        <RouterProvider router={router} />
-      </ThemeContextProvider>
-    </React.StrictMode>,
+  <React.StrictMode>
+    <ThemeContextProvider>
+      <RouterProvider router={router} />
+    </ThemeContextProvider>
+  </React.StrictMode>,
 );

@@ -5,7 +5,6 @@ import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/SideBar';
 import { AppFallback } from '@/widgets/AppFallback';
 import { ErrorBoundary } from './providers/ErrorBoundary';
-import './styles/index.scss';
 
 export const App = () => {
   const { theme } = useTheme();

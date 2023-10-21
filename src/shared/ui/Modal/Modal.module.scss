@@ -1,0 +1,44 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-overlay-closed);
+  background: var(--overlay-closed-color);
+
+  &.open {
+    z-index: var(--z-index-overlay-opened);
+    background: var(--overlay-opened-color);
+    backdrop-filter: blur(3px);
+  }
+}
+
+.modal {
+  position: fixed;
+  min-width: 80vh;
+  min-height: 60vh;
+  background: #fff;
+  inset: 50%;
+  transition: all 0.2s;
+
+  &.entering {
+    z-index: var(--z-index-modal-opened);
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+
+  &.entered {
+    z-index: var(--z-index-modal-opened);
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+
+  &.exiting {
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 0;
+  }
+
+  &.exited {
+    z-index: var(--z-index-modal-closed);
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 0;
+  }
+}

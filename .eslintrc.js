@@ -7,6 +7,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     'google',
   ],
   overrides: [],
@@ -16,7 +17,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'i18next'],
+  plugins: ['react', 'react-hooks', '@typescript-eslint', 'i18next'],
   root: true,
   rules: {
     'no-unused-vars': 'off',
@@ -44,5 +45,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'max-len': ['error', { code: 100, ignoreComments: true }],
     'i18next/no-literal-string': ['error', { markupOnly: true }],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
 };

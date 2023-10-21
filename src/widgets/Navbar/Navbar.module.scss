@@ -1,7 +1,9 @@
 .navbar {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   width: 100%;
   height: var(--navbar-height);
+  padding: 0 10px;
   background: var(--inverted-bg-color);
 }

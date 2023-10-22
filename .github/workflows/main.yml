@@ -1,8 +1,6 @@
 name: linting, testing, building
 on:
   push:
-    branches: []
-  pull_request:
     branches: [master]
 jobs:
   pipeline:

@@ -5,5 +5,8 @@
   "Закрыть": "Close",
   "Главная": "Main",
   "О сайте": "About",
-  "Войти": "Sign in"
+  "Войти": "Sign in",
+  "Логин": "Log in",
+  "Пароль": "Password",
+  "Авторизация": "Authentification"
 }

@@ -13,11 +13,12 @@
 
 .modal {
   position: fixed;
-  min-width: 80vh;
-  min-height: 60vh;
+  min-width: 30vw;
+  min-height: 40vh;
   color: var(--primary-color);
   background: var(--bg-color);
   inset: 50%;
+  border-radius: 10px;
   transition: all 0.2s;
 
   &.entering {

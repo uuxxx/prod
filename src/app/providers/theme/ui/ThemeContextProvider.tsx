@@ -1,5 +1,5 @@
 import { useState, useCallback, FC, PropsWithChildren } from 'react';
-import { LOCALSTORAGE_THEME_KEY } from '../lib/localStorage_theme_key';
+import { LOCALSTORAGE_THEME_KEY } from '@/shared/constants/localstorage';
 import { ThemeContext } from '../lib/ThemeContext';
 import { Theme } from '../lib/types';
 

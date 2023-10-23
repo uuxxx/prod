@@ -23,6 +23,10 @@
   border: 1px solid var(--primary-color);
 }
 
+.disabled {
+  opacity: 0.5;
+}
+
 .medium {
   min-width: var(--font-line-m);
   min-height: var(--font-line-m);

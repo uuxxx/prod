@@ -1,4 +1,4 @@
-import { Modal } from '@/shared/ui/Modal/Modal';
+import { Modal } from '@/shared/ui/Modal';
 import { LoginModalProps } from './LoginModalProps';
 import { classNames } from '@/shared/lib';
 import { LoginForm } from '../LoginForm';

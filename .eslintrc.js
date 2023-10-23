@@ -43,7 +43,7 @@ module.exports = {
       },
     ],
     'react/react-in-jsx-scope': 'off',
-    'max-len': ['error', { code: 100, ignoreComments: true }],
+    'max-len': ['error', { code: 115, ignoreComments: true }],
     'i18next/no-literal-string': ['error', { markupOnly: true }],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',

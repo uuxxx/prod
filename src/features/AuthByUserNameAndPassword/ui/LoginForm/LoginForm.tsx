@@ -25,16 +25,16 @@ export const LoginForm = memo(function LoginForm(props: LoginFormProps) {
   const isLoading = useAppSelector(getLoadingStatus);
 
   const setLogin = useCallback(
-    (value: string) => {
-      dispatch(loginActions.setUsername(value));
-    },
-    [dispatch],
+      (value: string) => {
+        dispatch(loginActions.setUsername(value));
+      },
+      [dispatch],
   );
   const setPassword = useCallback(
-    (value: string) => {
-      dispatch(loginActions.setPassword(value));
-    },
-    [dispatch],
+      (value: string) => {
+        dispatch(loginActions.setPassword(value));
+      },
+      [dispatch],
   );
 
   const onSubmit = useCallback(() => {

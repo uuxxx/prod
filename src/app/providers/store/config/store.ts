@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { userReducer } from '@/entities/User';
-import { loginReducer } from '@/features/authByUserNameAndPassword';
+import { loginReducer } from '@/features/authByLoginAndPassword';
 
 const store = configureStore({
   reducer: {

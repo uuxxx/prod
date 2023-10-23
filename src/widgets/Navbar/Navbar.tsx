@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { classNames, useAppDispatch, useAppSelector } from '@/shared/lib';
 import { NavbarProps } from './NavbarProps';
-import { LoginModal } from '@/features/authByUserNameAndPassword/ui/LoginModal';
+import { LoginModal } from '@/features/authByLoginAndPassword/ui/LoginModal';
 import { Button } from '@/shared/ui/Button';
 import { useTranslation } from 'react-i18next';
 import { getUserAuthData, userActions } from '@/entities/User';

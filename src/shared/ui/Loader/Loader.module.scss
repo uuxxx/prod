@@ -22,7 +22,7 @@
 }
 
 .loader::after {
-  color: var(--inverted-primary-color);
+  color: var(--primary-color);
   transform: rotateY(70deg);
   animation-delay: 0.4s;
 }

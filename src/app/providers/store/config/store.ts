@@ -11,6 +11,7 @@ const reducerManager = createReducerManager(reducerMap);
 
 export function createReduxStore(preloadedState?: PreloadedState<StoreSchema>) {
   const store = configureStore<StoreSchema>({
+    // @ts-ignore
     reducer: reducerManager.reduce,
     devTools: !__IS_PROD__,
     preloadedState,

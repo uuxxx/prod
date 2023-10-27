@@ -27,7 +27,7 @@ export function plugins({ context, isProd }: PluginsOptions): webpack.WebpackPlu
     }),
     !isProd && new webpack.HotModuleReplacementPlugin(),
     !isProd && new ReactRefreshWebpackPlugin(),
-    isProd &&
+    !isProd &&
       new BundleAnalyzerPlugin({
         openAnalyzer: false,
       }),

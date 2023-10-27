@@ -4,13 +4,13 @@ import { LoginFormProps } from './LoginFormProps';
 import { classNames, useAppDispatch, useAppSelector } from '@/shared/lib';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
-import { authByUsernameAndPassword } from '../../model/services/authByUsername';
+import { authByUsernameAndPassword } from '../../model/services/authByUsername/authByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { Text } from '@/shared/ui/Text';
-import { getLogin } from '../../model/selectors/getLogin';
-import { getPassword } from '../../model/selectors/getPassword';
-import { getError } from '../../model/selectors/getError';
-import { getLoadingStatus } from '../../model/selectors/getLoadingStatus';
+import { getLogin } from '../../model/selectors/getLogin/getLogin';
+import { getPassword } from '../../model/selectors/getPassword/getPassword';
+import { getError } from '../../model/selectors/getError/getError';
+import { getLoadingStatus } from '../../model/selectors/getLoadingStatus/getLoadingStatus';
 import { WithAsyncReduxReducer } from '@/shared/lib/WithAsyncReduxReducer';
 import styles from './LoginForm.module.scss';
 
@@ -43,6 +43,7 @@ export default memo(function LoginForm(props: LoginFormProps) {
   }, [dispatch, login, password]);
 
   return (
+    // @ts-ignore
     <WithAsyncReduxReducer reducers={{ loginForm: loginReducer }}>
       <div className={classNames(styles, 'login-form', {}, [className])}>
         <Text title={t('Авторизация')} />

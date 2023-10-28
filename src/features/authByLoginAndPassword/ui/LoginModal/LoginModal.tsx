@@ -1,7 +1,9 @@
+import { Suspense } from 'react';
 import { Modal } from '@/shared/ui/Modal';
 import { LoginModalProps } from './LoginModalProps';
 import { classNames } from '@/shared/lib';
-import { LoginForm } from '../LoginForm';
+import { LoginFormLazy } from '../LoginForm';
+import { Loader } from '@/shared/ui/Loader';
 import styles from './LoginModal.module.scss';
 
 export function LoginModal(props: LoginModalProps) {
@@ -13,7 +15,9 @@ export function LoginModal(props: LoginModalProps) {
       lazy
       className={classNames(styles, 'login-modal', {}, [className])}
     >
-      <LoginForm />
+      <Suspense fallback={<Loader />}>
+        <LoginFormLazy />
+      </Suspense>
     </Modal>
   );
 }

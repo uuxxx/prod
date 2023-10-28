@@ -47,5 +47,7 @@ module.exports = {
     'i18next/no-literal-string': ['error', { markupOnly: true }],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    'prefer-promise-reject-errors': 'off',
   },
 };

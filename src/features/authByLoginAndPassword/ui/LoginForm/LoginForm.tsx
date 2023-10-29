@@ -15,9 +15,9 @@ import { WithAsyncReduxReducer } from '@/shared/lib/WithAsyncReduxReducer';
 import styles from './LoginForm.module.scss';
 
 export default memo(function LoginForm(props: LoginFormProps) {
-  const { className = '' } = props;
+  const { className = '', onSuccessLogin } = props;
 
-  const { t } = useTranslation();
+  const { t } = useTranslation('login_modal');
 
   const dispatch = useAppDispatch();
   const login = useAppSelector(getLogin);
@@ -38,9 +38,12 @@ export default memo(function LoginForm(props: LoginFormProps) {
       [dispatch],
   );
 
-  const onSubmit = useCallback(() => {
-    dispatch(authByUsernameAndPassword({ email: login, password }));
-  }, [dispatch, login, password]);
+  const onSubmit = useCallback(async () => {
+    const result = await dispatch(authByUsernameAndPassword({ email: login, password }));
+    if (result.meta.requestStatus === 'fulfilled') {
+      onSuccessLogin();
+    }
+  }, [dispatch, login, password, onSuccessLogin]);
 
   return (
     // @ts-ignore

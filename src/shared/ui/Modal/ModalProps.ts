@@ -1,9 +1,8 @@
 import { PropsWithChildren } from 'react';
+import { TimeoutProps } from 'react-transition-group/Transition';
 
-export interface ModalProps extends PropsWithChildren {
+export type ModalProps = {
   className?: string;
-  lazy?: boolean;
-  removeFromDOMWhenClosed?: boolean;
-  open: boolean;
-  onClose: () => void;
-}
+  close: () => void;
+} & PropsWithChildren &
+  TimeoutProps<HTMLDivElement>;

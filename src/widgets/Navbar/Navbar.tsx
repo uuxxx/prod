@@ -25,7 +25,6 @@ export function Navbar(props: NavbarProps) {
   if (user) {
     return (
       <nav className={classNames(styles, 'navbar', {}, [className])}>
-        <LoginModal open={loginModalOpen} onClose={toggleLoginModal} />
         <Button onClick={onSignout}>{t('Выйти')}</Button>
       </nav>
     );

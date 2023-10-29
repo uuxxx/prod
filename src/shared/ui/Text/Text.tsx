@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import { TextProps } from './TextProps';
 import { classNames } from '@/shared/lib';
 import styles from './Text.module.scss';
 
-export function Text(props: TextProps) {
+export const Text = memo(function Text(props: TextProps) {
   const { title, text, className = '', theme = 'primary' } = props;
 
   return (
@@ -11,4 +12,4 @@ export function Text(props: TextProps) {
       {text && <p className={styles.text}>{text}</p>}
     </div>
   );
-}
+});

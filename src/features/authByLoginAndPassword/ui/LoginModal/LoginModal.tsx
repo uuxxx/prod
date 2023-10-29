@@ -8,15 +8,18 @@ import styles from './LoginModal.module.scss';
 
 export function LoginModal(props: LoginModalProps) {
   const { open, onClose, className = '' } = props;
+
   return (
     <Modal
-      open={open}
-      onClose={onClose}
-      lazy
+      timeout={300}
+      in={open}
+      close={onClose}
+      mountOnEnter
+      unmountOnExit
       className={classNames(styles, 'login-modal', {}, [className])}
     >
       <Suspense fallback={<Loader />}>
-        <LoginFormLazy />
+        <LoginFormLazy onSuccessLogin={onClose} />
       </Suspense>
     </Modal>
   );

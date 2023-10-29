@@ -9,8 +9,8 @@ const reducerMap: ReducerMap = {
 
 const reducerManager = createReducerManager(reducerMap);
 
-export function createReduxStore(preloadedState?: PreloadedState<StoreSchema>) {
-  const store = configureStore<StoreSchema>({
+export function createReduxStore(preloadedState?: PreloadedState<RootState>) {
+  const store = configureStore({
     // @ts-ignore
     reducer: reducerManager.reduce,
     devTools: !__IS_PROD__,

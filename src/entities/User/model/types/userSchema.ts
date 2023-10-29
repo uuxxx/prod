@@ -5,6 +5,7 @@ export interface UserCredentials {
   createdAt?: string;
   lastSignInTime?: string;
   photoURL: null | string;
+  uid: string;
 }
 
-export type User = UserCredentials | null;
+export type UserSchema = UserCredentials | null;

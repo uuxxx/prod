@@ -1,4 +1,3 @@
-// import styles from './ProfilePage.module.scss';
 import { WithAsyncReduxReducer } from '@/shared/lib/WithAsyncReduxReducer';
 import { profileReducer } from '@/entities/Profile';
 import { useTranslation } from 'react-i18next';

@@ -33,6 +33,7 @@ describe('authByUsername', () => {
                 creationTime: '11 11 11',
                 lastSignInTime: '12 12 12',
               },
+              uid: 'test',
             },
           } as UserCredential);
         }),

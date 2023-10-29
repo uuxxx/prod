@@ -1,11 +1,13 @@
 import { ReducersMapObject } from '@reduxjs/toolkit';
-import { User } from '@/entities/User';
+import { UserSchema } from '@/entities/User';
 import { LoginSchema } from '@/features/authByLoginAndPassword';
+import { ProfileSchema } from '@/entities/Profile';
 
 export interface StoreSchema {
-  user: User;
+  user: UserSchema;
   // async reducers
   loginForm?: LoginSchema;
+  profile?: ProfileSchema;
 }
 
 export type ReducerMap = ReducersMapObject<StoreSchema>;

@@ -45,6 +45,7 @@ describe('authByUsername', () => {
       createdAt: '11 11 11',
       lastSignInTime: '12 12 12',
       photoURL: null,
+      uid: 'test',
     };
 
     const action = authByUsernameAndPassword({ password: '12345', email: 'test@mail.com' });

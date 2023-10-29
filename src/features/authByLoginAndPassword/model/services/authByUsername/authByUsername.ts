@@ -25,6 +25,7 @@ export const authByUsernameAndPassword = createAsyncThunk<
       createdAt: user.metadata.creationTime,
       lastSignInTime: user.metadata.lastSignInTime,
       photoURL: user.photoURL,
+      uid: user.uid,
     };
 
     localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(userCredentials));

@@ -7,31 +7,30 @@ import { useTheme } from '@/app/providers/theme';
 import styles from './Modal.module.scss';
 
 export function Modal(props: ModalProps) {
-  const { className = '', children, open, onClose, removeFromDOMWhenClosed, lazy } = props;
+  const {
+    className = '',
+    children,
+    in: open = false,
+    close,
+    unmountOnExit = false,
+    mountOnEnter = false,
+    timeout,
+  } = props;
 
   const { theme } = useTheme();
 
   const modalRef = useRef(null);
-  const wasModalOpened = useRef(false);
-
-  if (!open && removeFromDOMWhenClosed) {
-    return null;
-  }
-
-  if (lazy) {
-    if (!open && !wasModalOpened.current) {
-      return null;
-    }
-
-    if (open) {
-      wasModalOpened.current = true;
-    }
-  }
 
   return createPortal(
       <>
-        <div onClick={onClose} className={classNames(styles, 'overlay', { open })}></div>
-        <Transition in={open} timeout={300} nodeRef={modalRef}>
+        <div onClick={close} className={classNames(styles, 'overlay', { open })}></div>
+        <Transition
+          mountOnEnter={mountOnEnter}
+          unmountOnExit={unmountOnExit}
+          in={open}
+          timeout={timeout}
+          nodeRef={modalRef}
+        >
           {(state) => (
             <div
               ref={modalRef}

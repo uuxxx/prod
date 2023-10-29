@@ -1,14 +1,24 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib';
 import { SideBarProps } from './SideBarProps';
 import { ThemeSwitcher } from '@/widgets/ThemeSwitcher';
 import { LangSwitcher } from '@/widgets/LangSwitcher';
 import { Button } from '@/shared/ui/Button';
-import { AppLink } from '@/shared/ui/AppLink';
 import MainIcon from '@/shared/assets/icons/main-20-20.svg';
 import AboutIcon from '@/shared/assets/icons/about-20-20.svg';
+import ProfileIcon from '@/shared/assets/icons/profile-20-20.svg';
+import { SidebareItemType, SidebarItem } from './SidebarItem';
 import styles from './SideBar.module.scss';
+
+const SIDEBAR_ITEMS: SidebareItemType[] = [
+  { name: 'Главная', path: '/', SVGIcon: MainIcon },
+  {
+    name: 'О сайте',
+    path: '/about',
+    SVGIcon: AboutIcon,
+  },
+  { name: 'Профиль', path: '/profile', SVGIcon: ProfileIcon },
+];
 
 export function Sidebar(props: SideBarProps) {
   const { className = '' } = props;
@@ -19,22 +29,15 @@ export function Sidebar(props: SideBarProps) {
     setCollapsed((prev) => !prev);
   };
 
-  const { t } = useTranslation();
-
   return (
     <div
       data-testid="sidebar"
       className={classNames(styles, 'sidebar', { collapsed }, [className])}
     >
       <div className={classNames(styles, 'links')}>
-        <AppLink to={'/'} className={classNames(styles, 'link')}>
-          <MainIcon className={classNames(styles, 'link-icon')} />
-          <span className={classNames(styles, 'link-text')}>{t('Главная')}</span>
-        </AppLink>
-        <AppLink to={'/about'} className={classNames(styles, 'link')}>
-          <AboutIcon className={classNames(styles, 'link-icon')} />
-          <span className={classNames(styles, 'link-text')}>{t('О сайте')}</span>
-        </AppLink>
+        {SIDEBAR_ITEMS.map(({ path, name, SVGIcon }) => (
+          <SidebarItem key={name} path={path} name={name} SVGIcon={SVGIcon} collapsed={collapsed} />
+        ))}
       </div>
 
       <div className={styles.switchers}>

@@ -4,7 +4,7 @@ export interface UserCredentials {
   emailVerified: boolean;
   createdAt?: string;
   lastSignInTime?: string;
-  photoURL: null | string;
+  photoURL: string | null;
   uid: string;
 }
 

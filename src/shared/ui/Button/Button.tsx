@@ -1,14 +1,13 @@
 import { PropsWithChildren } from 'react';
 import { ButtonProps } from './ButtonProps';
 import { classNames } from '@/shared/lib';
-import { ButtonTheme } from './ButtonTheme';
 import styles from './Button.module.scss';
 
 export function Button(props: PropsWithChildren<ButtonProps>) {
   const {
     className = '',
     children,
-    theme = ButtonTheme.CLEAR,
+    theme = 'clear',
     disabled = false,
     size = 'medium',
     ...other
@@ -16,7 +15,10 @@ export function Button(props: PropsWithChildren<ButtonProps>) {
 
   return (
     <button
-      className={classNames(styles, 'button', { theme, [size]: true, disabled }, [className])}
+      disabled={disabled}
+      className={classNames(styles, 'button', { [theme]: true, [size]: true, disabled }, [
+        className,
+      ])}
       {...other}
     >
       <div className={styles.wrapper}>{children}</div>

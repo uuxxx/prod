@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { memo, useCallback, ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LoginFormProps } from './LoginFormProps';
 import { classNames, useAppDispatch, useAppSelector } from '@/shared/lib';
@@ -26,13 +26,15 @@ export default memo(function LoginForm(props: LoginFormProps) {
   const isLoading = useAppSelector(getLoadingStatus);
 
   const setLogin = useCallback(
-      (value: string) => {
+      (e: ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target;
         dispatch(loginActions.setUsername(value));
       },
       [dispatch],
   );
   const setPassword = useCallback(
-      (value: string) => {
+      (e: ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target;
         dispatch(loginActions.setPassword(value));
       },
       [dispatch],
@@ -47,7 +49,7 @@ export default memo(function LoginForm(props: LoginFormProps) {
 
   return (
     // @ts-ignore
-    <WithAsyncReduxReducer reducers={{ loginForm: loginReducer }}>
+    <WithAsyncReduxReducer removeAfterUnmount reducers={{ loginForm: loginReducer }}>
       <div className={classNames(styles, 'login-form', {}, [className])}>
         <Text title={t('Авторизация')} />
         {error && <Text text={error} theme={'error'} />}

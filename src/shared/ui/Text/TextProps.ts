@@ -3,4 +3,5 @@ export interface TextProps {
   title?: string;
   text?: string;
   theme?: 'primary' | 'error';
+  align?: 'center' | 'left' | 'right';
 }

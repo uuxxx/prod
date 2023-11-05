@@ -1,0 +1,28 @@
+.mask {
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  z-index: 5;
+  padding-top: 10px;
+  text-align: center;
+  background: var(--inverted-primary-color);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.bordered {
+  border-radius: 50%;
+}
+
+.wrapper {
+  position: relative;
+
+  &:hover .mask {
+    opacity: 0.5;
+  }
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+}

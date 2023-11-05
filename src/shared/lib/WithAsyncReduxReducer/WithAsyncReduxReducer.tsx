@@ -4,7 +4,7 @@ import { useAppDispatch, useAppStore } from '../reduxHooks/reduxHooks';
 import { WithAsyncReduxReducerProps } from './WithAsyncReduxReducerProps';
 
 export function WithAsyncReduxReducer(props: WithAsyncReduxReducerProps) {
-  const { reducers, children } = props;
+  const { reducers, removeAfterUnmount = false, children } = props;
 
   const { reducerManager } = useAppStore();
   const dispatch = useAppDispatch();
@@ -24,6 +24,7 @@ export function WithAsyncReduxReducer(props: WithAsyncReduxReducerProps) {
       });
     }
     return () => {
+      if (!removeAfterUnmount) return;
       reducersMap = [];
       for (const reducerKey in reducers) {
         if (Object.prototype.hasOwnProperty.call(reducers, reducerKey)) {

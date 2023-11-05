@@ -3,4 +3,5 @@ import { PropsWithChildren } from 'react';
 
 export interface WithAsyncReduxReducerProps extends PropsWithChildren {
   reducers: Partial<ReducerMap>;
+  removeAfterUnmount?: boolean;
 }

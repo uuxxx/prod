@@ -1,0 +1,25 @@
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+  margin-top: 50px;
+  padding: 20px;
+  border: var(--inverted-bg-color) 2px solid;
+}
+
+.inputs {
+  width: 100%;
+}
+
+.try-again-button {
+  margin-top: 10px;
+}
+
+.hidden {
+  position: absolute;
+  z-index: -100;
+  width: 0;
+  height: 0;
+}

@@ -1,10 +1,18 @@
-import { memo, useState } from 'react';
+import { useState, forwardRef, memo } from 'react';
 import { InputProps } from './InputProps';
 import { classNames } from '@/shared/lib';
 import styles from './Input.module.scss';
 
-export const Input = memo(function Input(props: InputProps) {
-  const { className = '', value = '', onChange, placeholder, autoFocus = false, ...other } = props;
+const ForwardRefInput = forwardRef<HTMLInputElement, InputProps>(function Input(props, ref) {
+  const {
+    className = '',
+    value = '',
+    onChange,
+    placeholder,
+    autoFocus = false,
+    readOnly = false,
+    ...other
+  } = props;
 
   const [focused, setFocused] = useState(autoFocus);
   const [caretPos, setCaretPos] = useState(0);
@@ -21,21 +29,27 @@ export const Input = memo(function Input(props: InputProps) {
     <div className={styles['input-wrapper']}>
       {placeholder && <div className={styles.placeholder}>{`${placeholder}>`}</div>}
       <div className={styles['caret-wrapper']}>
-        <div
-          className={classNames(styles, 'caret', { focused })}
-          style={{ left: `${caretPos}px` }}
-        ></div>
+        {!readOnly && (
+          <div
+            className={classNames(styles, 'caret', { focused })}
+            style={{ left: `${caretPos}px` }}
+          ></div>
+        )}
         <input
+          ref={ref}
+          readOnly={readOnly}
           value={value}
           onFocus={onFocus}
           onBlur={onBlur}
-          onChange={onChange && ((e) => onChange(e.target.value))}
+          onChange={onChange}
           onSelect={onSelect}
           autoFocus={autoFocus}
-          className={classNames(styles, 'input', {}, [className])}
+          className={classNames(styles, 'input', { readonly: readOnly }, [className])}
           {...other}
         />
       </div>
     </div>
   );
 });
+
+export const Input = memo(ForwardRefInput);

@@ -1,0 +1,21 @@
+.label {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.select {
+  color: var(--primary-color);
+  background: none;
+  border: 1px solid var(--primary-color);
+  outline: none;
+}
+
+.disabled {
+  opacity: 0.6;
+}
+
+.option {
+  color: var(--inverted-primary-color);
+  background: var(--inverted-bg-color);
+}

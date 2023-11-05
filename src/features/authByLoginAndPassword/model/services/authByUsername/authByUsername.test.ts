@@ -9,8 +9,6 @@ jest.mock('firebase/auth');
 
 const mockedFirebaseAuth = jest.mocked(firebaseAuth);
 
-console.log('mockedAuth:' + mockedFirebaseAuth);
-
 describe('authByUsername', () => {
   let dispatch: Dispatch;
   let getState: () => RootState;

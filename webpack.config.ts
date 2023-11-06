@@ -23,6 +23,7 @@ module.exports = ({ mode }: Env): webpack.Configuration => {
       filename: '[name].[contenthash].js',
       path: path.resolve(__dirname, 'dist'),
       clean: true,
+      publicPath: '/',
     },
     plugins: plugins({ context: __dirname, isProd }),
     devServer: isProd ? undefined : devServer(),

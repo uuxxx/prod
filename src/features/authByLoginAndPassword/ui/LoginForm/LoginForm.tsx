@@ -1,4 +1,5 @@
 import { memo, useCallback, ChangeEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LoginFormProps } from './LoginFormProps';
 import { classNames, useAppDispatch, useAppSelector } from '@/shared/lib';
@@ -20,6 +21,8 @@ export default memo(function LoginForm(props: LoginFormProps) {
   const { t } = useTranslation('login_modal');
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const login = useAppSelector(getLogin);
   const password = useAppSelector(getPassword);
   const error = useAppSelector(getError);
@@ -44,8 +47,9 @@ export default memo(function LoginForm(props: LoginFormProps) {
     const result = await dispatch(authByUsernameAndPassword({ email: login, password }));
     if (result.meta.requestStatus === 'fulfilled') {
       onSuccessLogin();
+      navigate('/profile');
     }
-  }, [dispatch, login, password, onSuccessLogin]);
+  }, [dispatch, login, password, onSuccessLogin, navigate]);
 
   return (
     // @ts-ignore

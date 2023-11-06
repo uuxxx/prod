@@ -29,7 +29,7 @@ export function ProfileCard(props: ProfileCardProps) {
 
   const { name, surname, age, city, currency, country, photoURL } = formData;
 
-  const { t } = useTranslation('profi le_page');
+  const { t } = useTranslation('profile_page');
 
   const dispatch = useAppDispatch();
   const uploadAvatarInputRef = useRef<HTMLInputElement>(null);

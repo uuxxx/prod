@@ -13,7 +13,8 @@ import {
 import { getEmail } from '../../model/selectors/getEmail/getEmail';
 import { getPassword } from '../../model/selectors/getPassword/getPassword';
 import { getReapeatedPassword } from '../../model/selectors/getReapeatedPassword/getReapeatedPassword';
-import { createAccontWithEmailAndPassword } from '../../model/services/createAccountWithEmailAndPassword/createAccountWithEmailAndPassword';
+import { createAccontWithEmailAndPassword } from
+  '../../model/services/createAccountWithEmailAndPassword/createAccountWithEmailAndPassword';
 import { getError } from '../../model/selectors/getError/getError';
 import { getLoading } from '../../model/selectors/getLoading/getLoading';
 import styles from './CreateAccountForm.module.scss';

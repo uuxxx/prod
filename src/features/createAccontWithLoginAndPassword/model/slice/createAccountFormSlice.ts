@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { createAccountFormSchema } from '../types/createAccountFormSchema';
-import { createAccontWithEmailAndPassword } from '../services/createAccountWithEmailAndPassword/createAccountWithEmailAndPassword';
+import { createAccontWithEmailAndPassword } from
+  '../services/createAccountWithEmailAndPassword/createAccountWithEmailAndPassword';
 
 const initialState: createAccountFormSchema = {
   email: '',

@@ -1,8 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { USER_LOCALSTORAGE_KEY } from '@/shared/constants/localstorage';
 import { UserSchema } from '../types/userSchema';
-import { authByUsernameAndPassword } from '@/features/authByLoginAndPassword/model/services/authByUsername/authByUsername';
-import { createAccontWithEmailAndPassword } from '@/features/createAccontWithLoginAndPassword/model/services/createAccountWithEmailAndPassword/createAccountWithEmailAndPassword';
+import { authByUsernameAndPassword }
+  from '@/features/authByLoginAndPassword/model/services/authByUsername/authByUsername';
+import { createAccontWithEmailAndPassword }
+// eslint-disable-next-line
+from '@/features/createAccontWithLoginAndPassword/model/services/createAccountWithEmailAndPassword/createAccountWithEmailAndPassword';
 
 const initialState = null as UserSchema;
 

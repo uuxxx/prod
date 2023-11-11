@@ -23,21 +23,20 @@ export const saveProfile = createAsyncThunk<
     if (!uid) {
       uid = getState()?.user?.uid;
       if (!uid) {
-        throw new Error(ProfileErrors.NO_AUTHORIZED_USER);
+        throw new Error(ProfileErrors.UNABLE_TO_RETRIEVE_PROFILE_DATA);
       }
     }
-    const { profile } = getState();
-    if (!profile?.formData) {
-      throw new Error(ProfileErrors.UNABLE_TO_RETRIEVE_PROFILE_DATA);
-    }
+
+    const profileFormData = getState().profile?.formData;
+    validateProfile(profileFormData);
 
     const blobUrl = getState()?.profile?.formData.photoURL || undefined;
 
-    validateProfile(profile.formData);
     await Promise.all([
-      setDoc(getUserRef(uid), profile.formData, { merge: true }),
+      setDoc(getUserRef(uid), profileFormData, { merge: true }),
       uploadAvatar(uid, blobUrl),
     ]);
+
     dispatch(fetchProfile(uid));
   } catch (e) {
     return rejectWithValue((e as ProfileError).message || ProfileErrors.UNEXPECTED_ERROR);

@@ -5,6 +5,8 @@ import { getAvatarsRef, getUserRef } from '@/firebase/refs';
 import { RootState } from '@/app/providers/store';
 import { Profile } from '../../types/Profile';
 import { ProfileError, ProfileErrors } from '../../types/ProfileErrors';
+import { Country } from '@/shared/constants/country';
+import { Currency } from '@/shared/constants/currency';
 
 function downloadAvatar(uid: string) {
   return new Promise<Blob | string>((resolve, reject) => {
@@ -28,11 +30,18 @@ export const fetchProfile = createAsyncThunk<
       }
     }
     const docSnap = await getDoc(getUserRef(uid));
-    if (!docSnap.exists()) {
-      throw new Error(ProfileErrors.USER_NOT_FOUND);
-    }
+
     const avatarResponse = await downloadAvatar(uid);
-    const userProfileData = docSnap.data() as Profile;
+    const userProfileData = docSnap.exists() ?
+      docSnap.data() :
+      ({
+        name: '',
+        surname: '',
+        age: '',
+        city: '',
+        country: Country.Russia,
+        currency: Currency.RUB,
+      } as Profile);
     if (typeof avatarResponse !== 'string') {
       userProfileData.photoURL = URL.createObjectURL(avatarResponse);
     }

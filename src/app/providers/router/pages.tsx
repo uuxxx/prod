@@ -11,6 +11,6 @@ export const PAGES: RouteObject[] = [
   { path: 'about', element: <AboutPage /> },
   { path: 'profile', element: <ProfilePage /> },
   { path: 'articles', element: <ArticlesPage /> },
-  { path: 'article_details:id', element: <ArticleDetailsPage /> },
+  { path: 'articles/:id', element: <ArticleDetailsPage /> },
   { path: '*', element: <NotFound /> },
 ];

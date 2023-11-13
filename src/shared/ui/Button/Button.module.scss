@@ -8,6 +8,11 @@
   border: none;
   outline: none;
   cursor: pointer;
+
+  &:hover {
+    fill-opacity: 0.6;
+    opacity: 0.6;
+  }
 }
 
 .clear {

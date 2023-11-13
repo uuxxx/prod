@@ -1,0 +1,24 @@
+.article-details {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.article-header {
+  margin-top: 20px;
+}
+
+.center-items {
+  align-items: center;
+  justify-content: center;
+}
+
+.stats {
+  display: flex;
+  gap: 10px;
+  width: 300px;
+}
+
+.avatar {
+  align-self: center;
+}

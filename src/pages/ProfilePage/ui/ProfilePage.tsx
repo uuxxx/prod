@@ -20,8 +20,11 @@ export default function ProfilePage() {
 
   return (
     <PrivateRoute isAvailable={!!user}>
-      {/* @ts-ignore */}
-      <WithAsyncReduxReducer reducers={{ profile: profileReducer }}>
+      <WithAsyncReduxReducer
+        removeAfterUnmount
+        // @ts-ignore
+        reducers={{ profile: profileReducer }}
+      >
         <ProfileHeader />
         <ProfileCard data={profileData} />
       </WithAsyncReduxReducer>

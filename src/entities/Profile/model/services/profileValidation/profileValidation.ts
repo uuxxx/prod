@@ -1,7 +1,7 @@
 import { Profile } from '../../types/Profile';
 import { ProfileErrors } from '../../types/ProfileErrors';
 
-export function validateProfile(profile: Profile) {
+export function validateProfile(profile: Profile = {}) {
   const { age, name, surname, country, currency } = profile;
 
   if (!age || isNaN(Number(age))) {

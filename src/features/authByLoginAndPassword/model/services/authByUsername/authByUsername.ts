@@ -2,8 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { signInWithEmailAndPassword, AuthError } from 'firebase/auth';
 import { auth } from '@/firebase';
 import { UserCredentials } from '@/entities/User';
-import { userActions } from '@/entities/User';
 import { USER_LOCALSTORAGE_KEY } from '@/shared/constants/localstorage';
+import { extractProfileSchemaObjFromUserCredentials } from '@/shared/lib';
 
 interface AuthByUsernameAndPasswordProps {
   email: string;
@@ -14,22 +14,13 @@ export const authByUsernameAndPassword = createAsyncThunk<
   UserCredentials,
   AuthByUsernameAndPasswordProps,
   { rejectValue: string }
->('user/fetchByIdStatus', async ({ password, email }, { rejectWithValue, dispatch }) => {
+>('user/fetchByIdStatus', async ({ password, email }, { rejectWithValue }) => {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
 
-    const userCredentials = {
-      email: user.email,
-      displayName: user.displayName,
-      emailVerified: user.emailVerified,
-      createdAt: user.metadata.creationTime,
-      lastSignInTime: user.metadata.lastSignInTime,
-      photoURL: user.photoURL,
-      uid: user.uid,
-    };
+    const userCredentials = extractProfileSchemaObjFromUserCredentials(user);
 
     localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(userCredentials));
-    dispatch(userActions.setUserData(userCredentials));
 
     return userCredentials;
   } catch (e) {

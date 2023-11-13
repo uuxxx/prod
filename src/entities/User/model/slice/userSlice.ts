@@ -1,6 +1,11 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { USER_LOCALSTORAGE_KEY } from '@/shared/constants/localstorage';
 import { UserSchema } from '../types/userSchema';
+import { authByUsernameAndPassword }
+  from '@/features/authByLoginAndPassword/model/services/authByUsername/authByUsername';
+import { createAccontWithEmailAndPassword }
+// eslint-disable-next-line
+from '@/features/createAccontWithLoginAndPassword/model/services/createAccountWithEmailAndPassword/createAccountWithEmailAndPassword';
 
 const initialState = null as UserSchema;
 
@@ -8,9 +13,6 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUserData(_, { payload }: PayloadAction<UserSchema>) {
-      return payload;
-    },
     initAuthData() {
       return JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY)!);
     },
@@ -18,6 +20,14 @@ const userSlice = createSlice({
       localStorage.removeItem(USER_LOCALSTORAGE_KEY);
       return null;
     },
+  },
+  extraReducers(builder) {
+    builder.addCase(authByUsernameAndPassword.fulfilled, (_, { payload }) => {
+      return payload;
+    });
+    builder.addCase(createAccontWithEmailAndPassword.fulfilled, (_, { payload }) => {
+      return payload;
+    });
   },
 });
 

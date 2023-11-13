@@ -5,7 +5,8 @@ import { DocumentSnapshot, DocumentData } from 'firebase/firestore';
 import { RootState } from '@/app/providers/store';
 import { Profile } from '../../types/Profile';
 import { fetchProfile } from './fetchProfile';
-import { ProfileErrors } from '../../types/ProfileErrors';
+import { Country } from '@/shared/constants/country';
+import { Currency } from '@/shared/constants/currency';
 
 jest.mock('firebase/storage');
 jest.mock('firebase/firestore');
@@ -60,7 +61,7 @@ describe('fetchProfile', () => {
     expect(mockedFirestore.getDoc).toHaveBeenCalled();
   });
 
-  it('server responded with error, USER_NOT_FOUND', async () => {
+  it('should return empty profile schema', async () => {
     const testBlob = new Blob(['test'], { type: 'image/png' });
     mockedStorage.getBlob.mockResolvedValue(testBlob);
 
@@ -77,7 +78,15 @@ describe('fetchProfile', () => {
     const action = fetchProfile('test');
     const result = await action(dispatch, getState, undefined);
 
-    expect(result.meta.requestStatus).toBe('rejected');
-    expect(result.payload).toBe(ProfileErrors.USER_NOT_FOUND);
+    expect(result.meta.requestStatus).toBe('fulfilled');
+    expect(result.payload).toEqual({
+      name: '',
+      surname: '',
+      age: '',
+      city: '',
+      photoURL: 'test',
+      country: Country.Russia,
+      currency: Currency.RUB,
+    });
   });
 });

@@ -3,7 +3,6 @@ import type { UserCredential } from 'firebase/auth';
 import { RootState } from '@/app/providers/store';
 import { Dispatch } from '@reduxjs/toolkit';
 import { authByUsernameAndPassword } from './authByUsername';
-import { userActions } from '@/entities/User';
 
 jest.mock('firebase/auth');
 
@@ -50,9 +49,9 @@ describe('authByUsername', () => {
     const action = authByUsernameAndPassword({ password: '12345', email: 'test@mail.com' });
     const result = await action(dispatch, getState, undefined);
 
-    expect(dispatch).toBeCalledWith(userActions.setUserData(user));
     expect(mockedFirebaseAuth.signInWithEmailAndPassword).toHaveBeenCalled();
     expect(result.meta.requestStatus).toBe('fulfilled');
+    expect(result.payload).toEqual(user);
   });
 
   it('server reponded with error', async () => {

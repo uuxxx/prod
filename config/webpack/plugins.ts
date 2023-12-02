@@ -4,10 +4,11 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import CopyPlugin from 'copy-webpack-plugin';
 import { PluginsOptions } from './types';
 
 function isWebpackPluginInstance(
-    plugin: webpack.WebpackPluginInstance | boolean,
+  plugin: webpack.WebpackPluginInstance | boolean,
 ): plugin is webpack.WebpackPluginInstance {
   return typeof plugin !== 'boolean';
 }
@@ -31,5 +32,8 @@ export function plugins({ context, isProd }: PluginsOptions): webpack.WebpackPlu
       new BundleAnalyzerPlugin({
         openAnalyzer: false,
       }),
+    new CopyPlugin({
+      patterns: [{ context, from: 'public/locales', to: 'locales' }],
+    }),
   ].filter(isWebpackPluginInstance);
 }
